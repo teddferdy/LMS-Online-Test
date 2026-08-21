@@ -1,98 +1,173 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# LMS Tempat Les — Online Testing API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Backend REST API untuk platform LMS tempat les: guru mengelola bank soal (Pilihan Ganda & Essay), menugaskan ujian ke murid, dan sistem menilai jawaban secara otomatis (auto-grading engine).
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Dibangun sesuai spesifikasi pada `DESIGN.md` (FSD v1.1).
 
-## Description
+## Tech Stack
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+| Layer | Teknologi |
+| :--- | :--- |
+| Framework | NestJS 11 (Node.js 20) |
+| Database | PostgreSQL |
+| ORM | Prisma ORM |
+| Auth | JWT (Bearer) + bcrypt, RBAC (`GURU` / `MURID`) |
+| Validasi | class-validator + class-transformer |
+| Export | ExcelJS (.xlsx) |
 
-## Project setup
+## Fitur V1
+
+- **RBAC**: pemisahan hak akses mutlak antara Guru dan Murid.
+- **Bank Soal**: soal Pilihan Ganda (kunci dinormalkan ke huruf opsi A–J) dan Essay (kunci kata kunci).
+- **Draft & Publish Workflow**: tugas dibuat sebagai draft, baru terlihat murid setelah di-publish.
+- **Smart Assignment**: satu penugasan untuk banyak murid sekaligus, dengan durasi pengerjaan & due date.
+- **Auto-Grading Engine**: penilaian murni di server.
+  - PG: pencocokan huruf opsi (case-insensitive).
+  - Essay: exact match ternormalisasi (huruf kecil + spasi berlebih diabaikan); jawaban panjang yang tidak cocok ditandai `NEEDS_REVIEW`.
+- **Keamanan Penilaian**: kunci jawaban & pembahasan tidak pernah dikirim saat pengerjaan (`/take`), hanya muncul setelah submit (`/submit` & `/review`).
+- **Anti Double Submit**: constraint unik `(assignmentId, studentId)`.
+- **Timeout Flag**: penanda `isTimeout` untuk auto-submit ketika waktu habis.
+- **Export Rekap Nilai**: unduh rekap nilai dalam format `.xlsx`.
+
+## Setup
 
 ```bash
+# 1. Install dependencies
 $ yarn install
-```
 
-## Compile and run the project
+# 2. Konfigurasi environment
+$ cp .env.example .env   # lalu sesuaikan DATABASE_URL & JWT_SECRET
 
-```bash
-# development
-$ yarn run start
+# 3. Jalankan migrasi database
+$ yarn prisma migrate dev
 
-# watch mode
+# 4. Jalankan aplikasi
 $ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
 ```
 
-## Run tests
+Aplikasi berjalan di `http://localhost:3000` dengan global prefix `/api`.
+
+## Environment Variables
+
+| Variable | Deskripsi | Contoh |
+| :--- | :--- | :--- |
+| `DATABASE_URL` | Koneksi PostgreSQL | `postgresql://user@localhost:5432/lms_online_testing?schema=public` |
+| `JWT_SECRET` | Secret untuk signing JWT | (string acak yang kuat) |
+| `JWT_EXPIRES_IN` | Masa aktif token | `1d` |
+| `PORT` | Port server | `3000` |
+
+## API Endpoints
+
+### Authentication
+
+| Method | Endpoint | Role | Deskripsi |
+| :--- | :--- | :--- | :--- |
+| POST | `/api/auth/register` | Public | Daftar akun (`role`: `GURU` / `MURID`) |
+| POST | `/api/auth/login` | Public | Login, mengembalikan JWT |
+| GET | `/api/auth/me` | Semua | Profil user yang sedang login |
+
+### Modul Guru — Bank Soal
+
+| Method | Endpoint | Deskripsi |
+| :--- | :--- | :--- |
+| POST | `/api/questions` | Buat soal PG/Essay |
+| GET | `/api/questions` | Daftar bank soal milik guru |
+| PUT | `/api/questions/:id` | Ubah soal |
+| DELETE | `/api/questions/:id` | Hapus soal |
+
+Contoh body `POST /api/questions`:
+
+```json
+{
+  "questionText": "Ibu kota Indonesia adalah...",
+  "type": "MULTIPLE_CHOICE",
+  "options": ["A. Jakarta", "B. Bandung", "C. Surabaya"],
+  "correctAnswer": "A",
+  "explanation": "Ibu kota Indonesia adalah Jakarta."
+}
+```
+
+> Untuk PG, `correctAnswer` menerima huruf opsi (`"A"`) atau teks opsi lengkap (`"A. Jakarta"`) — keduanya dinormalkan menjadi huruf opsi.
+
+### Modul Guru — Penugasan
+
+| Method | Endpoint | Deskripsi |
+| :--- | :--- | :--- |
+| POST | `/api/assignments` | Tugaskan paket soal ke banyak murid (draft) |
+| GET | `/api/assignments/teacher` | Daftar tugas + rekap nilai murid |
+| PATCH | `/api/assignments/:id/publish` | Publikasikan tugas |
+| GET | `/api/assignments/:id/export` | Unduh rekap nilai `.xlsx` |
+
+```json
+{
+  "title": "Ujian Geografi Kelas 8",
+  "questionIds": ["<questionId1>", "<questionId2>"],
+  "studentIds": ["<studentId1>", "<studentId2>"],
+  "durationMin": 45,
+  "dueDate": "2026-12-31T23:59:00Z"
+}
+```
+
+### Modul Murid — Pengerjaan
+
+| Method | Endpoint | Deskripsi |
+| :--- | :--- | :--- |
+| GET | `/api/assignments/student` | Daftar tugas milik murid |
+| GET | `/api/assignments/:id/take` | Ambil soal tanpa kunci jawaban (+ `serverTime` untuk timer) |
+| POST | `/api/assignments/:id/submit` | Kirim jawaban → skor otomatis + review |
+| GET | `/api/assignments/:id/review` | Detail jawaban vs kunci + pembahasan |
+
+```json
+{
+  "answers": { "<questionId>": "A", "<essayQuestionId>": "Jakarta" },
+  "isTimeout": false
+}
+```
+
+Response submit:
+
+```json
+{
+  "message": "Tugas berhasil dikumpulkan",
+  "submissionId": "...",
+  "score": 50,
+  "status": "AUTO_GRADED",
+  "summary": { "totalQuestions": 2, "correct": 1, "wrong": 1 },
+  "review": [
+    {
+      "questionId": "...",
+      "questionType": "MULTIPLE_CHOICE",
+      "questionText": "Ibu kota Indonesia adalah...",
+      "studentAnswer": "A",
+      "correctAnswer": "A",
+      "isCorrect": true,
+      "explanation": "Ibu kota Indonesia adalah Jakarta."
+    }
+  ]
+}
+```
+
+## Struktur Proyek
+
+```
+src/
+├── common/            # Guards (JWT, Roles) & decorators (@Public, @Roles, @CurrentUser)
+├── auth/              # Register, login, me, JWT strategy
+├── questions/         # CRUD bank soal (validasi kunci jawaban PG)
+├── assignments/       # Penugasan, take, submit, review, publish, export
+│   └── grading.ts     # Auto-grading engine (pure function)
+└── prisma/            # Prisma service (global)
+```
+
+## Testing
 
 ```bash
-# unit tests
-$ yarn run test
+# unit tests (grading engine, auth, questions, assignments)
+$ yarn test
 
 # e2e tests
-$ yarn run test:e2e
+$ yarn test:e2e
 
-# test coverage
-$ yarn run test:cov
+# coverage
+$ yarn test:cov
 ```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ yarn install -g @nestjs/mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
