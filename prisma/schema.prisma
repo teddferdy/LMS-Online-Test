@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  GURU
+  MURID
+}
+
+enum QuestionType {
+  MULTIPLE_CHOICE
+  ESSAY
+}
+
+enum GradingStatus {
+  AUTO_GRADED
+  NEEDS_REVIEW
+}
+
+model User {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role
+  createdAt DateTime @default(now())
+
+  createdQuestions Question[]     @relation("TeacherQuestions")
+  assignments      Assignment[]   @relation("StudentAssignments")
+  taughtAssignment Assignment[]   @relation("TeacherAssignments")
+  submissions      Submission[]
+}
+
+model Question {
+  id             String       @id @default(uuid())
+  teacherId      String
+  teacher        User         @relation("TeacherQuestions", fields: [teacherId], references: [id], onDelete: Cascade)
+  type           QuestionType @default(MULTIPLE_CHOICE)
+  questionText   String
+  imageUrl       String?
+  options        Json?
+  correctAnswer  String
+  explanation    String?
+  explanationImg String?
+  createdAt      DateTime     @default(now())
+
+  @@index([teacherId])
+}
+
+model Assignment {
+  id          String   @id @default(uuid())
+  title       String
+  questionIds Json
+  teacherId   String
+  teacher     User     @relation("TeacherAssignments", fields: [teacherId], references: [id], onDelete: Cascade)
+  studentId   String
+  student     User     @relation("StudentAssignments", fields: [studentId], references: [id], onDelete: Cascade)
+  durationMin Int      @default(60)
+  isPublished Boolean  @default(false)
+  dueDate     DateTime
+  createdAt   DateTime @default(now())
+
+  submissions Submission[]
+
+  @@index([teacherId])
+  @@index([studentId])
+}
+
+model Submission {
+  id           String        @id @default(uuid())
+  assignmentId String
+  assignment   Assignment    @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  studentId    String
+  student      User          @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  answers      Json
+  score        Float
+  status       GradingStatus @default(AUTO_GRADED)
+  isTimeout    Boolean       @default(false)
+  review       Json
+  submittedAt  DateTime      @default(now())
+
+  @@unique([assignmentId, studentId])
+}
