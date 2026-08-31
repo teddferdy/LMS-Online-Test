@@ -6,12 +6,13 @@
     "organization": null,
     "repositoryId": null,
     "repositoryName": null,
-    "createdAt": "2026-08-21T04:04:30.133Z",
-    "updatedAt": "2026-08-21T04:04:30.133Z",
+    "createdAt": "2026-08-31T07:36:06.830Z",
+    "updatedAt": "2026-08-31T07:36:06.830Z",
     "languages": [
       "JSON",
       "Javascript",
       "Markdown",
+      "SQL",
       "TypeScript"
     ]
   },
@@ -532,9 +533,929 @@
     },
     {
       "toolId": "ESLint9",
-      "localConfigurationFile": "/Users/teddyferdianabraramrullah/Project/lms-online-testing/eslint.config.mjs",
-      "useLocalConfigurationFile": true,
-      "patterns": []
+      "patterns": [
+        {
+          "patternId": "ESLint9_constructor-super"
+        },
+        {
+          "patternId": "ESLint9_for-direction"
+        },
+        {
+          "patternId": "ESLint9_getter-return"
+        },
+        {
+          "patternId": "ESLint9_jest_consistent-test-it"
+        },
+        {
+          "patternId": "ESLint9_jest-dom_prefer-checked"
+        },
+        {
+          "patternId": "ESLint9_jest-dom_prefer-empty"
+        },
+        {
+          "patternId": "ESLint9_jest-dom_prefer-enabled-disabled"
+        },
+        {
+          "patternId": "ESLint9_jest-dom_prefer-focus"
+        },
+        {
+          "patternId": "ESLint9_jest-dom_prefer-in-document"
+        },
+        {
+          "patternId": "ESLint9_jest-dom_prefer-required"
+        },
+        {
+          "patternId": "ESLint9_jest-dom_prefer-to-have-attribute"
+        },
+        {
+          "patternId": "ESLint9_jest-dom_prefer-to-have-class"
+        },
+        {
+          "patternId": "ESLint9_jest-dom_prefer-to-have-style"
+        },
+        {
+          "patternId": "ESLint9_jest-dom_prefer-to-have-text-content"
+        },
+        {
+          "patternId": "ESLint9_jest-dom_prefer-to-have-value"
+        },
+        {
+          "patternId": "ESLint9_jest_expect-expect"
+        },
+        {
+          "patternId": "ESLint9_jest-extended_prefer-to-be-array"
+        },
+        {
+          "patternId": "ESLint9_jest-extended_prefer-to-be-false"
+        },
+        {
+          "patternId": "ESLint9_jest-extended_prefer-to-be-object"
+        },
+        {
+          "patternId": "ESLint9_jest-extended_prefer-to-be-true"
+        },
+        {
+          "patternId": "ESLint9_jest-extended_prefer-to-have-been-called-once"
+        },
+        {
+          "patternId": "ESLint9_jest-formatting_padding-around-after-all-blocks"
+        },
+        {
+          "patternId": "ESLint9_jest-formatting_padding-around-after-each-blocks"
+        },
+        {
+          "patternId": "ESLint9_jest-formatting_padding-around-all"
+        },
+        {
+          "patternId": "ESLint9_jest-formatting_padding-around-before-all-blocks"
+        },
+        {
+          "patternId": "ESLint9_jest-formatting_padding-around-before-each-blocks"
+        },
+        {
+          "patternId": "ESLint9_jest-formatting_padding-around-describe-blocks"
+        },
+        {
+          "patternId": "ESLint9_jest-formatting_padding-around-expect-groups"
+        },
+        {
+          "patternId": "ESLint9_jest-formatting_padding-around-test-blocks"
+        },
+        {
+          "patternId": "ESLint9_jest_max-expects"
+        },
+        {
+          "patternId": "ESLint9_jest_max-nested-describe"
+        },
+        {
+          "patternId": "ESLint9_jest_no-alias-methods"
+        },
+        {
+          "patternId": "ESLint9_jest_no-commented-out-tests"
+        },
+        {
+          "patternId": "ESLint9_jest_no-conditional-expect"
+        },
+        {
+          "patternId": "ESLint9_jest_no-conditional-in-test"
+        },
+        {
+          "patternId": "ESLint9_jest_no-confusing-set-timeout"
+        },
+        {
+          "patternId": "ESLint9_jest_no-deprecated-functions"
+        },
+        {
+          "patternId": "ESLint9_jest_no-disabled-tests"
+        },
+        {
+          "patternId": "ESLint9_jest_no-done-callback"
+        },
+        {
+          "patternId": "ESLint9_jest_no-duplicate-hooks"
+        },
+        {
+          "patternId": "ESLint9_jest_no-export"
+        },
+        {
+          "patternId": "ESLint9_jest_no-focused-tests"
+        },
+        {
+          "patternId": "ESLint9_jest_no-hooks"
+        },
+        {
+          "patternId": "ESLint9_jest_no-identical-title"
+        },
+        {
+          "patternId": "ESLint9_jest_no-interpolation-in-snapshots"
+        },
+        {
+          "patternId": "ESLint9_jest_no-jasmine-globals"
+        },
+        {
+          "patternId": "ESLint9_jest_no-large-snapshots"
+        },
+        {
+          "patternId": "ESLint9_jest_no-mocks-import"
+        },
+        {
+          "patternId": "ESLint9_jest_no-restricted-jest-methods"
+        },
+        {
+          "patternId": "ESLint9_jest_no-restricted-matchers"
+        },
+        {
+          "patternId": "ESLint9_jest_no-standalone-expect"
+        },
+        {
+          "patternId": "ESLint9_jest_no-test-prefixes"
+        },
+        {
+          "patternId": "ESLint9_jest_no-test-return-statement"
+        },
+        {
+          "patternId": "ESLint9_jest_no-untyped-mock-factory"
+        },
+        {
+          "patternId": "ESLint9_jest_padding-around-after-all-blocks"
+        },
+        {
+          "patternId": "ESLint9_jest_padding-around-after-each-blocks"
+        },
+        {
+          "patternId": "ESLint9_jest_padding-around-all"
+        },
+        {
+          "patternId": "ESLint9_jest_padding-around-before-all-blocks"
+        },
+        {
+          "patternId": "ESLint9_jest_padding-around-before-each-blocks"
+        },
+        {
+          "patternId": "ESLint9_jest_padding-around-describe-blocks"
+        },
+        {
+          "patternId": "ESLint9_jest_padding-around-expect-groups"
+        },
+        {
+          "patternId": "ESLint9_jest_padding-around-test-blocks"
+        },
+        {
+          "patternId": "ESLint9_jest_prefer-called-with"
+        },
+        {
+          "patternId": "ESLint9_jest_prefer-comparison-matcher"
+        },
+        {
+          "patternId": "ESLint9_jest_prefer-each"
+        },
+        {
+          "patternId": "ESLint9_jest_prefer-equality-matcher"
+        },
+        {
+          "patternId": "ESLint9_jest_prefer-expect-assertions"
+        },
+        {
+          "patternId": "ESLint9_jest_prefer-expect-resolves"
+        },
+        {
+          "patternId": "ESLint9_jest_prefer-hooks-in-order"
+        },
+        {
+          "patternId": "ESLint9_jest_prefer-hooks-on-top"
+        },
+        {
+          "patternId": "ESLint9_jest_prefer-importing-jest-globals"
+        },
+        {
+          "patternId": "ESLint9_jest_prefer-jest-mocked"
+        },
+        {
+          "patternId": "ESLint9_jest_prefer-lowercase-title"
+        },
+        {
+          "patternId": "ESLint9_jest_prefer-mock-promise-shorthand"
+        },
+        {
+          "patternId": "ESLint9_jest_prefer-snapshot-hint"
+        },
+        {
+          "patternId": "ESLint9_jest_prefer-spy-on"
+        },
+        {
+          "patternId": "ESLint9_jest_prefer-strict-equal"
+        },
+        {
+          "patternId": "ESLint9_jest_prefer-to-be"
+        },
+        {
+          "patternId": "ESLint9_jest_prefer-to-contain"
+        },
+        {
+          "patternId": "ESLint9_jest_prefer-todo"
+        },
+        {
+          "patternId": "ESLint9_jest_prefer-to-have-length"
+        },
+        {
+          "patternId": "ESLint9_jest_require-hook"
+        },
+        {
+          "patternId": "ESLint9_jest_require-top-level-describe"
+        },
+        {
+          "patternId": "ESLint9_jest_require-to-throw-message"
+        },
+        {
+          "patternId": "ESLint9_jest_valid-describe-callback"
+        },
+        {
+          "patternId": "ESLint9_jest_valid-expect"
+        },
+        {
+          "patternId": "ESLint9_jest_valid-expect-in-promise"
+        },
+        {
+          "patternId": "ESLint9_jest_valid-title"
+        },
+        {
+          "patternId": "ESLint9_no-async-promise-executor"
+        },
+        {
+          "patternId": "ESLint9_no-case-declarations"
+        },
+        {
+          "patternId": "ESLint9_no-class-assign"
+        },
+        {
+          "patternId": "ESLint9_no-compare-neg-zero"
+        },
+        {
+          "patternId": "ESLint9_no-cond-assign"
+        },
+        {
+          "patternId": "ESLint9_no-constant-binary-expression"
+        },
+        {
+          "patternId": "ESLint9_no-constant-condition"
+        },
+        {
+          "patternId": "ESLint9_no-const-assign"
+        },
+        {
+          "patternId": "ESLint9_no-control-regex"
+        },
+        {
+          "patternId": "ESLint9_no-debugger"
+        },
+        {
+          "patternId": "ESLint9_no-delete-var"
+        },
+        {
+          "patternId": "ESLint9_no-dupe-args"
+        },
+        {
+          "patternId": "ESLint9_no-dupe-class-members"
+        },
+        {
+          "patternId": "ESLint9_no-dupe-else-if"
+        },
+        {
+          "patternId": "ESLint9_no-dupe-keys"
+        },
+        {
+          "patternId": "ESLint9_no-duplicate-case"
+        },
+        {
+          "patternId": "ESLint9_no-empty"
+        },
+        {
+          "patternId": "ESLint9_no-empty-character-class"
+        },
+        {
+          "patternId": "ESLint9_no-empty-pattern"
+        },
+        {
+          "patternId": "ESLint9_no-empty-static-block"
+        },
+        {
+          "patternId": "ESLint9_no-ex-assign"
+        },
+        {
+          "patternId": "ESLint9_no-extra-boolean-cast"
+        },
+        {
+          "patternId": "ESLint9_no-fallthrough"
+        },
+        {
+          "patternId": "ESLint9_no-func-assign"
+        },
+        {
+          "patternId": "ESLint9_no-global-assign"
+        },
+        {
+          "patternId": "ESLint9_no-import-assign"
+        },
+        {
+          "patternId": "ESLint9_no-invalid-regexp"
+        },
+        {
+          "patternId": "ESLint9_no-irregular-whitespace"
+        },
+        {
+          "patternId": "ESLint9_no-loss-of-precision"
+        },
+        {
+          "patternId": "ESLint9_no-misleading-character-class"
+        },
+        {
+          "patternId": "ESLint9_no-new-native-nonconstructor"
+        },
+        {
+          "patternId": "ESLint9_no-nonoctal-decimal-escape"
+        },
+        {
+          "patternId": "ESLint9_no-obj-calls"
+        },
+        {
+          "patternId": "ESLint9_no-octal"
+        },
+        {
+          "patternId": "ESLint9_no-prototype-builtins"
+        },
+        {
+          "patternId": "ESLint9_no-redeclare"
+        },
+        {
+          "patternId": "ESLint9_no-regex-spaces"
+        },
+        {
+          "patternId": "ESLint9_no-self-assign"
+        },
+        {
+          "patternId": "ESLint9_no-setter-return"
+        },
+        {
+          "patternId": "ESLint9_no-shadow-restricted-names"
+        },
+        {
+          "patternId": "ESLint9_no-sparse-arrays"
+        },
+        {
+          "patternId": "ESLint9_no-this-before-super"
+        },
+        {
+          "patternId": "ESLint9_no-undef"
+        },
+        {
+          "patternId": "ESLint9_no-unexpected-multiline"
+        },
+        {
+          "patternId": "ESLint9_no-unreachable"
+        },
+        {
+          "patternId": "ESLint9_no-unsafe-finally"
+        },
+        {
+          "patternId": "ESLint9_no-unsafe-negation"
+        },
+        {
+          "patternId": "ESLint9_no-unsafe-optional-chaining"
+        },
+        {
+          "patternId": "ESLint9_no-unused-labels"
+        },
+        {
+          "patternId": "ESLint9_no-unused-private-class-members"
+        },
+        {
+          "patternId": "ESLint9_no-unused-vars"
+        },
+        {
+          "patternId": "ESLint9_no-useless-backreference"
+        },
+        {
+          "patternId": "ESLint9_no-useless-catch"
+        },
+        {
+          "patternId": "ESLint9_no-useless-escape"
+        },
+        {
+          "patternId": "ESLint9_no-with"
+        },
+        {
+          "patternId": "ESLint9_require-yield"
+        },
+        {
+          "patternId": "ESLint9_security_detect-bidi-characters"
+        },
+        {
+          "patternId": "ESLint9_security_detect-buffer-noassert"
+        },
+        {
+          "patternId": "ESLint9_security_detect-child-process"
+        },
+        {
+          "patternId": "ESLint9_security_detect-disable-mustache-escape"
+        },
+        {
+          "patternId": "ESLint9_security_detect-eval-with-expression"
+        },
+        {
+          "patternId": "ESLint9_security_detect-new-buffer"
+        },
+        {
+          "patternId": "ESLint9_security_detect-no-csrf-before-method-override"
+        },
+        {
+          "patternId": "ESLint9_security_detect-non-literal-fs-filename"
+        },
+        {
+          "patternId": "ESLint9_security_detect-non-literal-regexp"
+        },
+        {
+          "patternId": "ESLint9_security_detect-non-literal-require"
+        },
+        {
+          "patternId": "ESLint9_security_detect-object-injection"
+        },
+        {
+          "patternId": "ESLint9_security_detect-possible-timing-attacks"
+        },
+        {
+          "patternId": "ESLint9_security_detect-pseudoRandomBytes"
+        },
+        {
+          "patternId": "ESLint9_security_detect-unsafe-regex"
+        },
+        {
+          "patternId": "ESLint9_security-node_detect-absence-of-name-option-in-exrpress-session"
+        },
+        {
+          "patternId": "ESLint9_security-node_detect-child-process"
+        },
+        {
+          "patternId": "ESLint9_security-node_detect-dangerous-redirects"
+        },
+        {
+          "patternId": "ESLint9_security-node_detect-eval-with-expr"
+        },
+        {
+          "patternId": "ESLint9_security-node_detect-html-injection"
+        },
+        {
+          "patternId": "ESLint9_security-node_detect-improper-exception-handling"
+        },
+        {
+          "patternId": "ESLint9_security-node_detect-non-literal-require-calls"
+        },
+        {
+          "patternId": "ESLint9_security-node_detect-nosql-injection"
+        },
+        {
+          "patternId": "ESLint9_security-node_detect-option-multiplestatements-in-mysql"
+        },
+        {
+          "patternId": "ESLint9_security-node_detect-option-rejectunauthorized-in-nodejs-httpsrequest"
+        },
+        {
+          "patternId": "ESLint9_security-node_detect-option-unsafe-in-serialize-javascript-npm-package"
+        },
+        {
+          "patternId": "ESLint9_security-node_detect-possible-timing-attacks"
+        },
+        {
+          "patternId": "ESLint9_security-node_detect-security-missconfiguration-cookie"
+        },
+        {
+          "patternId": "ESLint9_security-node_detect-unhandled-async-errors"
+        },
+        {
+          "patternId": "ESLint9_security-node_detect-unhandled-event-errors"
+        },
+        {
+          "patternId": "ESLint9_security-node_disable-ssl-across-node-server"
+        },
+        {
+          "patternId": "ESLint9_security-node_non-literal-reg-expr"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_adjacent-overload-signatures"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_array-type"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_await-thenable"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_ban-ts-comment"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_ban-tslint-comment"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_class-literal-property-style"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_class-methods-use-this"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_consistent-generic-constructors"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_consistent-indexed-object-style"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_consistent-return"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_consistent-type-assertions"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_consistent-type-definitions"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_consistent-type-exports"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_default-param-last"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_dot-notation"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_explicit-function-return-type"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_explicit-member-accessibility"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_explicit-module-boundary-types"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_init-declarations"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_max-params"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_member-ordering"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_method-signature-style"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_naming-convention"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-array-constructor"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-array-delete"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-base-to-string"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-confusing-non-null-assertion"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-confusing-void-expression"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-deprecated"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-dupe-class-members"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-duplicate-enum-values"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-duplicate-type-constituents"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-dynamic-delete"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-empty-function"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-empty-interface"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-empty-object-type"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-explicit-any"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-extraneous-class"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-extra-non-null-assertion"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-floating-promises"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-for-in-array"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-implied-eval"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-import-type-side-effects"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-inferrable-types"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-invalid-this"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-invalid-void-type"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-loop-func"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-loss-of-precision"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-magic-numbers"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-meaningless-void-operator"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-misused-new"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-misused-promises"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-misused-spread"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-mixed-enums"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-namespace"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_non-nullable-type-assertion-style"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-non-null-asserted-nullish-coalescing"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-non-null-asserted-optional-chain"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-non-null-assertion"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-redeclare"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-redundant-type-constituents"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-require-imports"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-restricted-imports"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-restricted-types"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-shadow"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-this-alias"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-type-alias"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-unnecessary-boolean-literal-compare"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-unnecessary-condition"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-unnecessary-parameter-property-assignment"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-unnecessary-qualifier"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-unnecessary-template-expression"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-unnecessary-type-arguments"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-unnecessary-type-assertion"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-unnecessary-type-constraint"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-unnecessary-type-parameters"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-unsafe-argument"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-unsafe-assignment"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-unsafe-call"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-unsafe-declaration-merging"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-unsafe-enum-comparison"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-unsafe-function-type"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-unsafe-member-access"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-unsafe-return"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-unsafe-type-assertion"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-unsafe-unary-minus"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-unused-expressions"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-unused-vars"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-use-before-define"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-useless-constructor"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-useless-empty-export"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-var-requires"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_no-wrapper-object-types"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_only-throw-error"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_parameter-properties"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_prefer-as-const"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_prefer-destructuring"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_prefer-enum-initializers"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_prefer-find"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_prefer-for-of"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_prefer-function-type"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_prefer-includes"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_prefer-literal-enum-member"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_prefer-namespace-keyword"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_prefer-nullish-coalescing"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_prefer-optional-chain"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_prefer-promise-reject-errors"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_prefer-readonly"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_prefer-readonly-parameter-types"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_prefer-reduce-type-parameter"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_prefer-regexp-exec"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_prefer-return-this-type"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_prefer-string-starts-ends-with"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_prefer-ts-expect-error"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_promise-function-async"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_related-getter-setter-pairs"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_require-array-sort-compare"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_require-await"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_restrict-plus-operands"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_restrict-template-expressions"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_return-await"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_sort-type-constituents"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_strict-boolean-expressions"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_switch-exhaustiveness-check"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_triple-slash-reference"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_typedef"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_unbound-method"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_unified-signatures"
+        },
+        {
+          "patternId": "ESLint9_@typescript-eslint_use-unknown-in-catch-callback-variable"
+        },
+        {
+          "patternId": "ESLint9_use-isnan"
+        },
+        {
+          "patternId": "ESLint9_valid-typeof"
+        },
+        {
+          "patternId": "ESLint9_xss_no-location-href-assign"
+        }
+      ]
     },
     {
       "toolId": "Checkov",
@@ -936,7 +1857,16 @@
           "patternId": "Checkov_CKV2_GCP_12"
         },
         {
+          "patternId": "Checkov_CKV2_GCP_13"
+        },
+        {
           "patternId": "Checkov_CKV2_GCP_14"
+        },
+        {
+          "patternId": "Checkov_CKV2_GCP_15"
+        },
+        {
+          "patternId": "Checkov_CKV2_GCP_17"
         },
         {
           "patternId": "Checkov_CKV2_GCP_18"
@@ -3192,13 +4122,22 @@
           "patternId": "Checkov_CKV_GCP_50"
         },
         {
+          "patternId": "Checkov_CKV_GCP_51"
+        },
+        {
           "patternId": "Checkov_CKV_GCP_52"
         },
         {
           "patternId": "Checkov_CKV_GCP_53"
         },
         {
+          "patternId": "Checkov_CKV_GCP_54"
+        },
+        {
           "patternId": "Checkov_CKV_GCP_55"
+        },
+        {
+          "patternId": "Checkov_CKV_GCP_56"
         },
         {
           "patternId": "Checkov_CKV_GCP_57"
@@ -4234,6 +5173,29 @@
       ]
     },
     {
+      "toolId": "PMD7",
+      "patterns": [
+        {
+          "patternId": "PMD7_category_ecmascript_bestpractices_AvoidWithStatement"
+        },
+        {
+          "patternId": "PMD7_category_ecmascript_bestpractices_ConsistentReturn"
+        },
+        {
+          "patternId": "PMD7_category_ecmascript_bestpractices_UseBaseWithParseInt"
+        },
+        {
+          "patternId": "PMD7_category_ecmascript_codestyle_AssignmentInOperand"
+        },
+        {
+          "patternId": "PMD7_category_ecmascript_codestyle_UnnecessaryBlock"
+        },
+        {
+          "patternId": "PMD7_category_ecmascript_errorprone_EqualComparison"
+        }
+      ]
+    },
+    {
       "toolId": "Biome",
       "patterns": [
         {
@@ -4850,6 +5812,61 @@
         },
         {
           "patternId": "Biome_lint_suspicious_useNamespaceKeyword"
+        }
+      ]
+    },
+    {
+      "toolId": "SQLint",
+      "patterns": [
+        {
+          "patternId": "SQLint_allIssues"
+        }
+      ]
+    },
+    {
+      "toolId": "SQLFluff",
+      "patterns": [
+        {
+          "patternId": "SQLFluff_AL01_aliasing.table"
+        },
+        {
+          "patternId": "SQLFluff_AL02_aliasing.column"
+        },
+        {
+          "patternId": "SQLFluff_AM01_ambiguous.distinct"
+        },
+        {
+          "patternId": "SQLFluff_CP01_capitalisation.keywords"
+        },
+        {
+          "patternId": "SQLFluff_CP02_capitalisation.identifiers"
+        },
+        {
+          "patternId": "SQLFluff_LT01_layout.spacing"
+        },
+        {
+          "patternId": "SQLFluff_LT02_layout.indent"
+        },
+        {
+          "patternId": "SQLFluff_LT04_layout.commas"
+        },
+        {
+          "patternId": "SQLFluff_RF01_references.from"
+        },
+        {
+          "patternId": "SQLFluff_RF02_references.qualification"
+        },
+        {
+          "patternId": "SQLFluff_ST01_structure.else_null"
+        },
+        {
+          "patternId": "SQLFluff_ST03_structure.unused_cte"
+        },
+        {
+          "patternId": "SQLFluff_ST06_structure.column_order"
+        },
+        {
+          "patternId": "SQLFluff_ST07_structure.using"
         }
       ]
     }
