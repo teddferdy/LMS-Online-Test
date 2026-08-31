@@ -15,6 +15,13 @@
     "esbuild",
     "unrs-resolver"
   ],
+  "allowScripts": [
+    "@prisma/client",
+    "@prisma/engines",
+    "bcrypt",
+    "esbuild",
+    "unrs-resolver"
+  ],
   "devDependencies": {
     "concurrently": "^9.1.0"
   }
