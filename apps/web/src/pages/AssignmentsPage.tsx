@@ -48,7 +48,8 @@ export function AssignmentsPage() {
   const exportExcel = async (id: string, title: string) => {
     try {
       const token = getToken()
-      const res = await fetch(`/api/assignments/${id}/export`, {
+      const base = (import.meta.env.VITE_API_URL ?? '').replace(/\/$/, '')
+      const res = await fetch(`${base}/api/assignments/${id}/export`, {
         headers: token ? { Authorization: `Bearer ${token}` } : {},
       })
       if (!res.ok) throw new Error('Export gagal')

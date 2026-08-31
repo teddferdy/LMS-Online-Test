@@ -9,6 +9,8 @@ class ApiError extends Error {
 const TOKEN_KEY = 'lms_token'
 const USER_KEY = 'lms_user'
 
+const API_BASE = (import.meta.env.VITE_API_URL ?? '').replace(/\/$/, '')
+
 export function getToken(): string | null {
   return localStorage.getItem(TOKEN_KEY)
 }
@@ -60,7 +62,7 @@ export async function api<T = unknown>(
     requestHeaders['Content-Type'] = 'application/json'
   }
 
-  const res = await fetch(`/api${path}`, {
+  const res = await fetch(`${API_BASE}/api${path}`, {
     method,
     headers: requestHeaders,
     body:

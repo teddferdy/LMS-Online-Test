@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: lms-backend
+    runtime: docker
+    dockerfilePath: ./apps/backend/Dockerfile
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /api
+    # Ganti DATABASE_URL dengan connection string PostgreSQL dari Neon (free tier)
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://USER:PASSWORD@HOST/dbname?sslmode=require
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 1d
