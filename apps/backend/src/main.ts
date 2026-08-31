@@ -1,9 +1,14 @@
-import { ValidationPipe } from '@nestjs/common';
+import { ValidationPipe, INestApplication } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import { ExpressAdapter } from '@nestjs/platform-express';
+import express from 'express';
 import { AppModule } from './app.module';
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+export async function createNestApp(): Promise<INestApplication> {
+  const app = await NestFactory.create(
+    AppModule,
+    new ExpressAdapter(express()),
+  );
 
   app.setGlobalPrefix('api');
   app.enableCors();
@@ -15,6 +20,15 @@ async function bootstrap() {
     }),
   );
 
+  await app.init();
+  return app;
+}
+
+async function bootstrap() {
+  const app = await createNestApp();
   await app.listen(process.env.PORT ?? 3000);
 }
-void bootstrap();
+
+if (require.main === module) {
+  void bootstrap();
+}

@@ -5,8 +5,16 @@
   "scripts": {
     "dev:backend": "yarn workspace lms-backend start:dev",
     "dev:web": "yarn workspace lms-web dev",
-    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:web\""
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:web\"",
+    "postinstall": "cd apps/backend && npx prisma generate"
   },
+  "onlyBuiltDependencies": [
+    "@prisma/client",
+    "@prisma/engines",
+    "bcrypt",
+    "esbuild",
+    "unrs-resolver"
+  ],
   "devDependencies": {
     "concurrently": "^9.1.0"
   }
